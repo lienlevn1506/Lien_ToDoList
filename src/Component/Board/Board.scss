@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// body {
+//     background-color: red;
+//     width: 70%vw;
+//     width: 500px;
+//     // margin-right: 0;
+// }
+.main {
+    display: flex;
+    flex-direction: row;
+    // width: 60vw;
+    height: 70vh;
+    margin-right: 20px;
+    background-color: white;
+    // margin-left: 38vw;
+    justify-content: space-between;
+    border-radius: 8px;
+}
+
+.col1 {
+    // display: flex;
+    position: absolute;
+    width: 19vw;
+    height: 70vh;
+    // left: 122px;
+    // top: 111.99px;
+    background: white;
+    opacity: 1;
+    // border: 0.2px solid #000000;
+    border-radius: 3px;
+}
+
+// .col2 {
+//     box-sizing: border-box;
+
+//     position: absolute;
+//     width: 19vw;
+//     height: 70vh;
+//     margin-left: 21vw;
+//     // top: 111.99px;
+
+//     background: white;
+//     opacity: 1;
+//     // border: 0.2px solid #000000;
+//     border-radius: 3px;
+// }
+
+// .col3 {
+//     box-sizing: border-box;
+//     position: absolute;
+//     width: 19vw;
+//     height: 70vh;
+//     margin-left: 42vw;
+//     // top: 111.99px;
+
+//     background: white;
+//     opacity: 1;
+//     // border: 0.2px solid #000000;
+//     border-radius: 3px;
+// }
+
+.col {
+    display: flex;
+    flex-direction: column;
+    display: block;
+    margin-bottom: 0;
+
+    &-top {
+        display: flex;
+        justify-content: center;
+        box-sizing: border-box;
+        // position: absolute;
+        width: 19vw;
+        text-align: center;
+        height: 50px;
+        background: #C0D5FD;
+        // border: 0.2px solid #000000;
+        border-radius: 3px 3px 0px 0px;
+        padding-top: 1.5em;
+
+        &__tittle {
+            position: absolute;
+            width: 382px;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 30px;
+            margin-top: -15px;
+            // line-height: 44px;
+            // display: flex;
+            // align-items: center;
+            // text-align: center;
+            // margin-left: 2.5em;
+            color: #000000;
+        }
+    }
+
+    &-bottom {
+        margin-top: 30px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        height: 55vh;
+
+        &::-webkit-scrollbar {
+            border-radius: 10px;
+            height: 10px;
+            width: 10px;
+            background-color: #e3e3e5;
+        }
+
+        //đây là css cả thanh lớn trượt
+
+        &::-webkit-scrollbar-thumb {
+            background: #999;
+            border-radius: 10px;
+        }
+
+        //thumb là thanh nhỏ để trượt
+
+        &::-webkit-scrollbar-track {
+            border-radius: 10px;
+        }
+
+        //track là đường viền ngoài
+    }
+}
