@@ -17,6 +17,7 @@ class MainPage extends Component {
     if (tittle && deadline && description) {
       let newTask = {
         tittle: tittle || "",
+        
         deadline: deadline || "",
         description: description || "",
       };
