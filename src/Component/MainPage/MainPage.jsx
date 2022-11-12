@@ -16,8 +16,8 @@ class MainPage extends Component {
   onHandleSubmit(tittle, deadline, description) {
     if (tittle && deadline && description) {
       let newTask = {
+        id: lastItemId,
         tittle: tittle || "",
-        
         deadline: deadline || "",
         description: description || "",
       };
@@ -53,5 +53,11 @@ class MainPage extends Component {
     );
   }
 }
+
+const lastItemId = (items) => {
+  if (items) {
+    return items[items.length - 1].id + 1;
+  } else return 1;
+};
 
 export default MainPage;
