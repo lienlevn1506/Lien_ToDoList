@@ -1,41 +1,41 @@
-import React, { Component } from 'react';
-import Data from '../Data/Data';
+// import React, { Component } from 'react';
+// import Data from '../Data/Data';
 
-class Tasks extends Component {
-    render() {
-        return (
-            <div>
-                 <div className="main">
-          <div className="col col1">
-            <div className="col-top">
-              <p className="col-top__tittle">To Do</p>
-            </div>
-            <div className="col-bottom">
-              <Data />
-            </div>
-          </div>
+// class Tasks extends Component {
+//     render() {
+//         return (
+//             <div>
+//                  <div className="main">
+//           <div className="col col1">
+//             <div className="col-top">
+//               <p className="col-top__tittle">To Do</p>
+//             </div>
+//             <div className="col-bottom">
+//               <Data />
+//             </div>
+//           </div>
 
-          <div className="col col2">
-            <div className="col-top">
-              <p className="col-top__tittle">Progress</p>
-            </div>
-            <div className="col-bottom">
-              <Data />
-            </div>
-          </div>
+//           <div className="col col2">
+//             <div className="col-top">
+//               <p className="col-top__tittle">Progress</p>
+//             </div>
+//             <div className="col-bottom">
+//               <Data />
+//             </div>
+//           </div>
 
-          <div className="col col3">
-            <div className="col-top">
-              <p className="col-top__tittle">Done</p>
-            </div>
-            <div className="col-bottom">
-              <Data />
-            </div>
-          </div>
-        </div>
-            </div>
-        );
-    }
-}
+//           <div className="col col3">
+//             <div className="col-top">
+//               <p className="col-top__tittle">Done</p>
+//             </div>
+//             <div className="col-bottom">
+//               <Data />
+//             </div>
+//           </div>
+//         </div>
+//             </div>
+//         );
+//     }
+// }
 
-export default Tasks;
+// export default Tasks;

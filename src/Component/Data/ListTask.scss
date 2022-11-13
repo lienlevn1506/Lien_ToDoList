@@ -12,6 +12,7 @@ body {
 
 .task {
     margin-bottom: 10px;
+
     &-main {
 
         // text-align: center;
@@ -180,4 +181,14 @@ body {
         }
 
     }
+}
+
+.clear {
+    margin-left: 170px;
+    width: 25px;
+    height: 25px;
+    margin-top: 3px;
+    border-radius: 50%;
+    // background-color: rgb(125, 11, 11);
+    display: fixed;
 }

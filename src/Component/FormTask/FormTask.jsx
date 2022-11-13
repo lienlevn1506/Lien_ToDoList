@@ -12,6 +12,7 @@ class FormTask extends Component {
     };
   }
 
+
   onHandleChangeTittle(event) {
     this.setState({
       tittle: event.target.value,
@@ -31,6 +32,7 @@ class FormTask extends Component {
   render() {
     // const { theWork } = this.props;
     const { dataSubmit } = this.props;
+    // const {id} = this.props;
 
     return (
       <div>
@@ -85,7 +87,7 @@ class FormTask extends Component {
                   dataSubmit(
                     this.state.tittle,
                     this.state.deadline,
-                    this.state.description
+                    this.state.description,
                   )
                 }
                 type="submit"
