@@ -26,25 +26,37 @@ class ListTask extends Component {
   render() {
     // let tasks = this.state.tasks || [];
 
-    const { ticket, status } = this.props;
+    const { ticket, status, deleteCard, editCard } = this.props;
 
     return (
       <div>
         <div className="task">
           <div className="task-main__tittle">
             {/* {this.props.children} */}
-
             <p
               className="task-main__tittle__text"
               style={this.getBackgroundHeader(status)}
             >
               {ticket.tittle}
-              <button className="clear">X</button>
+              <button className="clear" onClick={() => deleteCard(ticket.id)}>
+                X
+              </button>
+              {console.log(ticket.id)}
             </p>
             <p className="task-main__tittle__des1" type="text">
               {ticket.description}
             </p>
-            <p className="task-main__tittle__des2">{ticket.deadline}</p>
+            <p className="task-main__tittle__des2">
+              <p
+                className="task-main__tittle__des2_icon"
+                onClick={() => editCard(ticket.id)}
+              >
+                <i className="fa-sharp fa-solid fa-pencil"></i>
+              </p>
+              <p className="task-main__tittle__des2_deadline">
+                {ticket.deadline}
+              </p>
+            </p>
           </div>
         </div>
       </div>

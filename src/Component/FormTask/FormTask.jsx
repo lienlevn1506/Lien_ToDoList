@@ -6,6 +6,7 @@ class FormTask extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: "",
       tittle: "",
       deadline: "",
       description: "",
@@ -31,8 +32,9 @@ class FormTask extends Component {
 
   render() {
     // const { theWork } = this.props;
-    const { dataSubmit } = this.props;
+    const { dataSubmit, editTask } = this.props;
     // const {id} = this.props;
+    console.log("editTask", editTask);
 
     return (
       <div>

@@ -27,15 +27,19 @@ export default class Board extends Component {
   };
 
   render() {
-    const { status, tasks } = this.props;
-    console.log("task,", tasks);
+    const { status, tasks, deleteCard, editCard } = this.props;
+    // console.log("task,", tasks);
 
     const taskRender = tasks.map((task, index) => (
-      <ListTask key={index} ticket={task} status={task.status}></ListTask>
+      <ListTask
+        key={index}
+        ticket={task}
+        status={task.status}
+        deleteCard={deleteCard}
+        editCard={editCard}
+      ></ListTask>
     ));
-    // const taskRender = ticket.map((task, index) => (
-    //   < key={index} ticke={task} status= {status}></>
-    // ));
+
     return (
       <div>
         <div className="main">

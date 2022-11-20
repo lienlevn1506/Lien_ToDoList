@@ -11,21 +11,21 @@ export default class MainPage extends Component {
         {
           id: 1,
           tittle: "a",
-          deadline: 20 / 11 / 2022,
+          deadline: "20-11-2022",
           description: "abc",
           status: task_status.todo,
         },
         {
           id: 2,
           tittle: "b",
-          deadline: 20 / 11 / 2022,
+          deadline: "20-11-2022",
           description: "bcd",
           status: task_status.progress,
         },
         {
           id: 3,
           tittle: "c",
-          deadline: 20 / 11 / 2022,
+          deadline: "20-11-2022",
           description: "def",
           status: task_status.done,
         },
@@ -46,21 +46,31 @@ export default class MainPage extends Component {
         description: description || "",
         status: task_status.todo,
       };
+      console.log(newTask);
 
       currentTasks.push(newTask);
-      this.setState({ task: currentTasks });
+      this.setState({ tasks: currentTasks });
     }
   }
+  deleteCard = (cardId) => {
+    let currentTasks = this.state.tasks;
+    const newTasks = currentTasks.filter((card) => card.id !== cardId);
+    this.setState({ tasks: newTasks });
+  };
+  
+  editCard = (cardId) => {
+    let currentTask = this.state.tasks;
+    const editTask = currentTask.filter((card) => card.id === cardId);
+    <FormTask key={cardId} editTask={editTask}></FormTask>
+    // this.setState({task:editTask});
+    return editTask;
+  };
 
   render() {
     const { todoTasks, progressTasks, doneTasks } = taskDivisor(
       this.state.tasks
     );
-    console.log("object", todoTasks);
-
-    // const taskRender = tasks.map((task, index) => (
-    //   <ListTask key={index} task={task} status= {task.status}></ListTask>
-    // ));
+    // console.log("object", todoTasks);
 
     return (
       <div>
@@ -73,23 +83,26 @@ export default class MainPage extends Component {
         <div className="mainPage">
           {/* <Board />; */}
           <Board
-            // taskRender={taskRender}
             tasks={todoTasks}
             status={task_status.todo}
+            deleteCard={this.deleteCard}
+            editCard={this.editCard}
           >
             To do
           </Board>
           <Board
-            // taskRender={taskRender}
             tasks={progressTasks}
             status={task_status.progress}
+            deleteCard={this.deleteCard}
+            editCard={this.editCard}
           >
             Processing
           </Board>
           <Board
-            // taskRender={taskRender}
             tasks={doneTasks}
             status={task_status.done}
+            deleteCard={this.deleteCard}
+            editCard={this.editCard}
           >
             Done
           </Board>
@@ -121,8 +134,13 @@ const taskDivisor = (tasks) => {
 
   return { todoTasks, progressTasks, doneTasks };
 };
-const lastItemId = (newTasks) => {
-  return newTasks ? newTasks[newTasks.length - 1] + 1 : 1;
+
+const lastItemId = (newTask) => {
+  if (newTask) {
+    return newTask[newTask.length - 1].id + 1;
+  } else {
+    return 1;
+  }
 };
 const task_status = {
   todo: 1,
