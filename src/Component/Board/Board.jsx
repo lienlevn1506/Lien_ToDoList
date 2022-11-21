@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../Board/Board.scss";
-import ListTask from "../Data/ListTask";
+import Task from "../Task/Task";
 import { task_status } from "../MainPage/MainPage";
 
 export default class Board extends Component {
@@ -27,17 +27,18 @@ export default class Board extends Component {
   };
 
   render() {
-    const { status, tasks, deleteCard, editCard } = this.props;
+    const { status, tasks, deleteCard, onHandleEdit } = this.props;
     // console.log("task,", tasks);
 
     const taskRender = tasks.map((task, index) => (
-      <ListTask
+      <Task
         key={index}
         ticket={task}
         status={task.status}
         deleteCard={deleteCard}
-        editCard={editCard}
-      ></ListTask>
+        // editCard={editCard}
+        onHandleEdit={onHandleEdit}
+      ></Task>
     ));
 
     return (
@@ -46,7 +47,7 @@ export default class Board extends Component {
           <div className="row">
             <div className="col ">
               <div className="col-top" style={this.getBackgroundHeader(status)}>
-                <p className="col-top__tittle">{this.props.children}</p>
+                <p className="col-top__title">{this.props.children}</p>
               </div>
               <div className="col-bottom">{taskRender}</div>
             </div>

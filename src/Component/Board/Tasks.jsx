@@ -8,7 +8,7 @@
 //                  <div className="main">
 //           <div className="col col1">
 //             <div className="col-top">
-//               <p className="col-top__tittle">To Do</p>
+//               <p className="col-top__title">To Do</p>
 //             </div>
 //             <div className="col-bottom">
 //               <Data />
@@ -17,7 +17,7 @@
 
 //           <div className="col col2">
 //             <div className="col-top">
-//               <p className="col-top__tittle">Progress</p>
+//               <p className="col-top__title">Progress</p>
 //             </div>
 //             <div className="col-bottom">
 //               <Data />
@@ -26,7 +26,7 @@
 
 //           <div className="col col3">
 //             <div className="col-top">
-//               <p className="col-top__tittle">Done</p>
+//               <p className="col-top__title">Done</p>
 //             </div>
 //             <div className="col-bottom">
 //               <Data />

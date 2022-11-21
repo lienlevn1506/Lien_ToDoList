@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import "../Data/ListTask.scss";
+import "./Task.scss";
 import { task_status } from "../MainPage/MainPage";
 
-class ListTask extends Component {
+class Task extends Component {
   constructor(props) {
     super(props);
     this.getBackgroundHeader = this.getBackgroundHeader.bind(this);
@@ -26,34 +26,42 @@ class ListTask extends Component {
   render() {
     // let tasks = this.state.tasks || [];
 
-    const { ticket, status, deleteCard, editCard } = this.props;
+    const { ticket, status, deleteCard, onHandleEdit } = this.props;
+    console.log(ticket);
 
     return (
       <div>
         <div className="task">
-          <div className="task-main__tittle">
+          <div className="task-main__title">
             {/* {this.props.children} */}
             <p
-              className="task-main__tittle__text"
+              className="task-main__title__text"
               style={this.getBackgroundHeader(status)}
             >
-              {ticket.tittle}
+              {ticket.title}
               <button className="clear" onClick={() => deleteCard(ticket.id)}>
                 X
               </button>
-              {console.log(ticket.id)}
+              {/* {console.log(ticket.id)} */}
             </p>
-            <p className="task-main__tittle__des1" type="text">
+            <p className="task-main__title__des1" type="text">
               {ticket.description}
             </p>
-            <p className="task-main__tittle__des2">
+            <p className="task-main__title__des2">
               <p
-                className="task-main__tittle__des2_icon"
-                onClick={() => editCard(ticket.id)}
+                className="task-main__title__des2_icon"
+                onClick={() =>
+                  onHandleEdit(
+                    ticket.id,
+                    ticket.title,
+                    ticket.deadline,
+                    ticket.description
+                  )
+                }
               >
                 <i className="fa-sharp fa-solid fa-pencil"></i>
               </p>
-              <p className="task-main__tittle__des2_deadline">
+              <p className="task-main__title__des2_deadline">
                 {ticket.deadline}
               </p>
             </p>
@@ -64,4 +72,4 @@ class ListTask extends Component {
   }
 }
 
-export default ListTask;
+export default Task;

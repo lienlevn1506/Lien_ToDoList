@@ -7,16 +7,15 @@ class FormTask extends Component {
     super(props);
     this.state = {
       id: "",
-      tittle: "",
+      title: "",
       deadline: "",
       description: "",
     };
   }
 
-
-  onHandleChangeTittle(event) {
+  onHandleChangetitle(event) {
     this.setState({
-      tittle: event.target.value,
+      title: event.target.value,
     }); //đây chỉ lưu giá trị nhé
   }
   onHandleChangeDeadline(event) {
@@ -32,27 +31,26 @@ class FormTask extends Component {
 
   render() {
     // const { theWork } = this.props;
-    const { dataSubmit, editTask } = this.props;
-    // const {id} = this.props;
-    console.log("editTask", editTask);
+    const { dataSubmit, editData } = this.props;
+    const { id, title, deadline, description } = editData;
 
     return (
       <div>
         <div className="formTask">
           <div className="formTask-top">
-            <p className="formTask-top__tittle">Form Task</p>
+            <p className="formTask-top__title">Form Task</p>
           </div>
           <div className="formTask-main">
             <FormGroup className="formTask-main__input" row>
               <Col sm={10}>
                 <Input
                   className="formTask-main__input__box"
-                  id="tittle"
-                  name="tittle"
+                  id="title"
+                  name="title"
                   type="text"
-                  placeholder="Tittle"
-                  value={this.state.tittle}
-                  onChange={(event) => this.onHandleChangeTittle(event)}
+                  placeholder="title"
+                  value={id ? title : this.state.title}
+                  onChange={(event) => this.onHandleChangetitle(event)}
                 />
               </Col>
             </FormGroup>
@@ -64,7 +62,7 @@ class FormTask extends Component {
                   name="deadline"
                   type="date"
                   placeholder="Deadline"
-                  value={this.state.deadline}
+                  value={id ? deadline : this.state.deadline}
                   onChange={(event) => this.onHandleChangeDeadline(event)}
                 />
               </Col>
@@ -77,7 +75,7 @@ class FormTask extends Component {
                   name="description"
                   type="text"
                   placeholder="Description"
-                  value={this.state.description}
+                  value={id ? description : this.state.description}
                   onChange={(event) => this.onHandleChangeDescription(event)}
                 />
               </Col>
@@ -87,9 +85,9 @@ class FormTask extends Component {
               <button
                 onClick={() =>
                   dataSubmit(
-                    this.state.tittle,
+                    this.state.title,
                     this.state.deadline,
-                    this.state.description,
+                    this.state.description
                   )
                 }
                 type="submit"
@@ -106,7 +104,5 @@ class FormTask extends Component {
     );
   }
 }
-
-
 
 export default FormTask;

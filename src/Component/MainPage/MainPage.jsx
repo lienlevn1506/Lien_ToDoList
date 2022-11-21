@@ -10,45 +10,48 @@ export default class MainPage extends Component {
       tasks: [
         {
           id: 1,
-          tittle: "a",
+          title: "a",
           deadline: "20-11-2022",
           description: "abc",
           status: task_status.todo,
         },
         {
           id: 2,
-          tittle: "b",
+          title: "b",
           deadline: "20-11-2022",
           description: "bcd",
           status: task_status.progress,
         },
         {
           id: 3,
-          tittle: "c",
+          title: "c",
           deadline: "20-11-2022",
           description: "def",
           status: task_status.done,
         },
       ],
+      editTicket: [],
     };
     this.onHandleSubmit = this.onHandleSubmit.bind(this);
+    this.onHandleEdit = this.onHandleEdit(this);
   }
 
-  onHandleSubmit(tittle, deadline, description) {
-    if (tittle && deadline && description) {
+  onHandleSubmit(title, deadline, description) {
+    if (title && deadline && description) {
       let currentTasks = this.state.tasks;
 
       let idi = lastItemId(currentTasks);
       let newTask = {
         id: idi,
-        tittle: tittle || "",
+        title: title || "",
         deadline: deadline || "",
         description: description || "",
         status: task_status.todo,
       };
-      console.log(newTask);
+     
 
       currentTasks.push(newTask);
+      console.log("newTask", newTask);
       this.setState({ tasks: currentTasks });
     }
   }
@@ -57,28 +60,43 @@ export default class MainPage extends Component {
     const newTasks = currentTasks.filter((card) => card.id !== cardId);
     this.setState({ tasks: newTasks });
   };
-  
-  editCard = (cardId) => {
-    let currentTask = this.state.tasks;
-    const editTask = currentTask.filter((card) => card.id === cardId);
-    <FormTask key={cardId} editTask={editTask}></FormTask>
-    // this.setState({task:editTask});
-    return editTask;
-  };
+
+  // editCard = (cardId) => {
+  //   let currentTask = this.state.tasks;
+  //   const editTask = currentTask.filter((card) => card.id === cardId);
+  //   <FormTask key={cardId} editTask={editTask}></FormTask>;
+  //   // this.setState({task:editTask});
+  //   return editTask;
+  // };
+  onHandleEdit(id, title, deadline, description, status) {
+    let editData = {
+      id: id,
+      title: title,
+      deadline: deadline,
+      description: description,
+      status: task_status.todo,
+    };
+    this.setState({ editTicket: editData });
+  }
 
   render() {
     const { todoTasks, progressTasks, doneTasks } = taskDivisor(
       this.state.tasks
     );
+    // const { editTicket } = this.state;
+    // console.log("editTicket", editTicket);
     // console.log("object", todoTasks);
 
     return (
       <div>
         <div className="board">
-          <h1 className="board-tittle">Todo List Board</h1>
+          <h1 className="board-title">Todo List Board</h1>
         </div>
         <div className="formTask">
-          <FormTask dataSubmit={this.onHandleSubmit} />
+          <FormTask
+            dataSubmit={this.onHandleSubmit}
+            editData={this.editTicket}
+          />
         </div>
         <div className="mainPage">
           {/* <Board />; */}
@@ -86,7 +104,8 @@ export default class MainPage extends Component {
             tasks={todoTasks}
             status={task_status.todo}
             deleteCard={this.deleteCard}
-            editCard={this.editCard}
+            onHandleEdit={this.onHandleEdit}
+            // editCard={this.editCard}
           >
             To do
           </Board>
@@ -94,7 +113,8 @@ export default class MainPage extends Component {
             tasks={progressTasks}
             status={task_status.progress}
             deleteCard={this.deleteCard}
-            editCard={this.editCard}
+            // editCard={this.editCard}
+            onHandleEdit={this.onHandleEdit}
           >
             Processing
           </Board>
@@ -102,7 +122,8 @@ export default class MainPage extends Component {
             tasks={doneTasks}
             status={task_status.done}
             deleteCard={this.deleteCard}
-            editCard={this.editCard}
+            // editCard={this.editCard}
+            onHandleEdit={this.onHandleEdit}
           >
             Done
           </Board>
