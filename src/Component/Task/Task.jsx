@@ -27,7 +27,6 @@ class Task extends Component {
     // let tasks = this.state.tasks || [];
 
     const { ticket, status, deleteCard, onHandleEdit } = this.props;
-    console.log(ticket);
 
     return (
       <div>

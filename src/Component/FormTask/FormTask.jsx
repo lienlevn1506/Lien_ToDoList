@@ -32,7 +32,7 @@ class FormTask extends Component {
   render() {
     // const { theWork } = this.props;
     const { dataSubmit, editData } = this.props;
-    const { id, title, deadline, description } = editData;
+    const { lastItemId, title, deadline, description } = editData;
 
     return (
       <div>
@@ -49,7 +49,7 @@ class FormTask extends Component {
                   name="title"
                   type="text"
                   placeholder="title"
-                  value={id ? title : this.state.title}
+                  value={lastItemId ? title : this.state.title}
                   onChange={(event) => this.onHandleChangetitle(event)}
                 />
               </Col>
@@ -62,7 +62,7 @@ class FormTask extends Component {
                   name="deadline"
                   type="date"
                   placeholder="Deadline"
-                  value={id ? deadline : this.state.deadline}
+                  value={lastItemId ? deadline : this.state.deadline}
                   onChange={(event) => this.onHandleChangeDeadline(event)}
                 />
               </Col>
@@ -75,7 +75,7 @@ class FormTask extends Component {
                   name="description"
                   type="text"
                   placeholder="Description"
-                  value={id ? description : this.state.description}
+                  value={lastItemId ? description : this.state.description}
                   onChange={(event) => this.onHandleChangeDescription(event)}
                 />
               </Col>

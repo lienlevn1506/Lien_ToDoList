@@ -48,7 +48,6 @@ export default class MainPage extends Component {
         description: description || "",
         status: task_status.todo,
       };
-     
 
       currentTasks.push(newTask);
       console.log("newTask", newTask);
@@ -68,9 +67,9 @@ export default class MainPage extends Component {
   //   // this.setState({task:editTask});
   //   return editTask;
   // };
-  onHandleEdit(id, title, deadline, description, status) {
+  onHandleEdit(lastItemId, title, deadline, description) {
     let editData = {
-      id: id,
+      id: lastItemId,
       title: title,
       deadline: deadline,
       description: description,
@@ -96,6 +95,7 @@ export default class MainPage extends Component {
           <FormTask
             dataSubmit={this.onHandleSubmit}
             editData={this.editTicket}
+            onHandleEdit={this.onHandleEdit}
           />
         </div>
         <div className="mainPage">
